@@ -25,7 +25,7 @@ SKN01-3nd-4Team
       </td>
       <td align="center">
         <div>
-          <img src="https://github.com/user-attachments/assets/4d97616d-34b6-4495-aa18-dc1bb2733d4a"width="100px;" alt=""/>
+          <img src="https://github.com/user-attachments/assets/f3574b87-20b7-4ef3-8fc1-e7c893bd4418"width="100px;" alt=""/>
           <a href="https://github.com/RUVIST"><div align=center>최명근</div></a>
         </div>
       </td>
