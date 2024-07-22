@@ -2,7 +2,7 @@
 **TextFarmers(TF)**
 
 # 1. Introduction Team (팀 소개)
-<table align=center>
+<table align="center">
   <tbody>
     <tr>
       <td align="center">
@@ -34,9 +34,10 @@
 </table>
 
 # 2. Introduction Project (프로젝트 개요)
-- 프로젝트 명: TransFarmers(TF)
-- 프로젝트 소개: 러닝 유저들을 위한 러닝화 쇼핑 플랫폼 통한 가입 고객 이탈 예측 및 구매 동향 예측
-- 프로젝트 필요성(배경)
+### 🧡 소개 🧡
+러닝 유저들을 위한 러닝화 쇼핑 플랫폼
+<br/>
+### 💚 필요성 💚
  ![image](https://github.com/user-attachments/assets/437f0572-0be7-4849-a690-fa9a259a98a0)</br>
 위에 보이듯이 SNS상에서도 러닝은 큰 유행을 타며 이제는 일상이 되었습니다.</br>
 이로 인해 러닝을 즐기는 사람들을 위해서 주요 5대 브랜드의 런닝화 상품을 판매하는 쇼핑몰을 만들고,</br>
@@ -58,14 +59,15 @@
 작은 것 같지만 이와 같은 것들이 쌓여서 아주 기민하고 민첩한 조직을 만들어 냅니다.
 ```
 
-# 4. 데이터 수집 방식 (크롤링)
-## 더미데이터 생성 방식
+# 4. Backend 애자일 보드 - 요구 사항 정의서
+<!-- ## 더미데이터 생성 방식
 **계정 생성**</br>
 ![image](https://github.com/user-attachments/assets/4e395179-bae0-4643-954a-09270f696573)</br>
 **로그인 기록 생성**</br>
 ![image](https://github.com/user-attachments/assets/37f684fe-03d5-411a-ad32-8b830eac1e34)</br>
 **주문 생성**</br>
 ![image](https://github.com/user-attachments/assets/56cdf0c6-366c-4900-b937-9bb92c845f17)</br>
+-->
 
 # 5. Streamlit 애플리케이션 사용 방식
 
@@ -144,9 +146,25 @@
 # 10. 테스트 보고서 (CI 테스트 결과)
 
 # 11. Agile Board (애자일 보드)
+## Frontend
+<img src="https://github.com/user-attachments/assets/13856381-cd4e-453e-a1f7-a66a8c0e8744" />
+
+## Backend
+<img src="https://github.com/user-attachments/assets/d749633c-5a18-423f-a709-4b1dadcef73b" />
+
+## FastApi
+<img src="https://github.com/user-attachments/assets/41b3c5e2-0784-46cb-8e09-cf494f34ce58" />
+
 
 # 12. Deploy Issue (배포 이슈)
 
-# 13. 한 줄 회고
-4팀 모두 수고하셨습니다! 많이 배워갑니다!
 
+# 13. 한 줄 회고
+### 🌊 이경민
+자동화된 테스트 덕분에 코드 품질이 눈에 띄게 향상되어 뿌듯했지만, 설정 과정에서 많은 시행착오를 겪으며 좌절하기도 했다.
+### 😈 임영훈
+CI/CD 도입으로 배포 시간이 크게 단축되어 팀 전체가 성취감을 느꼈지만, 새로운 시스템을 배우느라 초반에는 많이 혼란스러웠다.
+### 🌋 정의헌
+자동화된 파이프라인 덕분에 팀원들과의 협업이 한결 수월해졌고, 문제 해결 과정에서도 큰 만족감을 느꼈다.
+### 🌾 최명근
+지속적인 통합 덕분에 작은 변화들도 빠르게 배포할 수 있어 좋았지만, 예상치 못한 문제들이 발생할 때마다 긴장감이 느껴졌다.
