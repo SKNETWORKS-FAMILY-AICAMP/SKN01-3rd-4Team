@@ -81,6 +81,24 @@ SKN01-3nd-4Team
 
 # 8. Result (수행 결과)
 
+**사이트 화면**
+![image](https://github.com/user-attachments/assets/83f21247-56f8-41d8-ab75-1197fa020d03)
+![image](https://github.com/user-attachments/assets/cd8d817f-5fe2-41bc-9f3f-8c4112efba4e)
+![image](https://github.com/user-attachments/assets/faa7942a-0d82-45de-b6b1-e9d6c6c4da35)
+![image](https://github.com/user-attachments/assets/386da3c1-478d-427d-8e9e-d70c34898af7)
+![image](https://github.com/user-attachments/assets/c64c8885-23ed-4093-be4e-f051b3586627)
+![image](https://github.com/user-attachments/assets/8bbf74bc-3c9b-433f-9c71-0b6e63a3bb9b)
+![image](https://github.com/user-attachments/assets/bd147f60-458f-4353-bb61-f780b8871ba2)
+
+
+**회원 예측**
+![image](https://github.com/user-attachments/assets/f3d259ef-a6d3-4558-9766-9a15fca97e97)
+![image](https://github.com/user-attachments/assets/1913abfc-e505-41d2-872b-dee1fcaebde8)
+![image](https://github.com/user-attachments/assets/f4970285-4242-4bfa-a107-2ec114ae76e2)
+![image](https://github.com/user-attachments/assets/25ed50c0-76a3-4fb6-be93-c6e4dde1a708)
+![image](https://github.com/user-attachments/assets/cf0a1767-2ab7-4d79-820e-06c80b0cf756)
+
+
 # 9. Tech Stack (기술 스택)
 <div align=left><h3>🕹️ Frontend</div>
 <div align=left>
@@ -115,5 +133,5 @@ SKN01-3nd-4Team
 # 12. Deploy Issue (배포 이슈)
 
 # 13. 한 줄 회고
-
+4팀 모두 수고하셨습니다! 많이 배워갑니다!
 
