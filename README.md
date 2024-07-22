@@ -1,5 +1,5 @@
 # SKN01-3nd-4Team
-SKN01-3nd-4Team
+**TextFarmers(TF)**
 
 # 1. Introduction Team (팀 소개)
 <table align=center>
@@ -34,7 +34,7 @@ SKN01-3nd-4Team
 </table>
 
 # 2. Introduction Project (프로젝트 개요)
-- 프로젝트 명: TransFaremrs(TF)
+- 프로젝트 명: TransFarmers(TF)
 - 프로젝트 소개: 러닝 유저들을 위한 러닝화 쇼핑 플랫폼 통한 가입 고객 이탈 예측 및 구매 동향 예측
 - 프로젝트 필요성(배경)
  ![image](https://github.com/user-attachments/assets/437f0572-0be7-4849-a690-fa9a259a98a0)</br>
@@ -42,9 +42,6 @@ SKN01-3nd-4Team
 이로 인해 러닝을 즐기는 사람들을 위해서 주요 5대 브랜드의 런닝화 상품을 판매하는 쇼핑몰을 만들고,</br>
 가입고객 이탈 예측 및 구매 동향을 분석하여 관리파 페이지에 레포트로 제공하는 플랫폼을 개발하기로 하였습니다.
 - 프로젝트 목표: 가입 고객 이탈 예측 및 구매 동향 예측
-
-  
-  
 
 
 # 3. ERD 구성
@@ -62,6 +59,13 @@ SKN01-3nd-4Team
 ```
 
 # 4. 데이터 수집 방식 (크롤링)
+## 더미데이터 생성 방식
+**계정 생성**</br>
+![image](https://github.com/user-attachments/assets/4e395179-bae0-4643-954a-09270f696573)</br>
+**로그인 기록 생성**</br>
+![image](https://github.com/user-attachments/assets/37f684fe-03d5-411a-ad32-8b830eac1e34)</br>
+**주문 생성**</br>
+![image](https://github.com/user-attachments/assets/56cdf0c6-366c-4900-b937-9bb92c845f17)</br>
 
 # 5. Streamlit 애플리케이션 사용 방식
 
