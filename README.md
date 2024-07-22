@@ -13,19 +13,19 @@ SKN01-3nd-4Team
       </td>
       <td align="center">
         <div>
-          <img src="https://github.com/user-attachments/assets/c7df2eb9-d897-4acc-87a9-3cdbca2863a6"width="100px;" alt=""/>
+          <img src="https://github.com/user-attachments/assets/c7df2eb9-d897-4acc-87a9-3cdbca2863a6"width="100px;"height="100px;"" alt=""/>
           <a href="https://github.com/2kilometer"><div align=center>이경민</div></a>
         </div>
       </td>
       <td align="center">
         <div>
-          <img src="https://github.com/user-attachments/assets/4d97616d-34b6-4495-aa18-dc1bb2733d4a"width="100px;" alt=""/>
+          <img src="https://github.com/user-attachments/assets/4d97616d-34b6-4495-aa18-dc1bb2733d4a"width="100px;"height="100px;" alt=""/>
           <a href="https://github.com/JUNGUIHEON"><div align=center>정의헌</div></a>
         </div>
       </td>
       <td align="center">
         <div>
-          <img src="https://github.com/user-attachments/assets/f3574b87-20b7-4ef3-8fc1-e7c893bd4418"width="100px;" alt=""/>
+          <img src="https://github.com/user-attachments/assets/c6970ea6-9c4d-4cc9-ba64-89db9bfe586f"width="100px;"height="100px;" alt=""/>
           <a href="https://github.com/RUVIST"><div align=center>최명근</div></a>
         </div>
       </td>
@@ -34,22 +34,21 @@ SKN01-3nd-4Team
 </table>
 
 # 2. Introduction Project (프로젝트 개요)
-- 프로젝트 명: TransFarmers(TF)
-- 프로젝트 소개: 의료 데이터를 활용한 챗봇 서비스
-- 프로젝트 배경:</br>
-  현대 사회에서 의료 데이터의 중요성이 점점 커지고 있지만 복잡한 의료 정보와 데이터는 일반 대중에게 쉽게 접근하기 어렵습니다.</br>
-  이를 해결하기 위해 의료 데이터를 효과적으로 활용하여 사용자 친화적인 챗봇 서비스를 개발하고자 합니다.</br>
-  이를 사용함으로써, 언제 어디서나 쉽게 접근할 수 있는 의료 정보와 상담 서비스를 통해 사용자의 편의를 도모할 수 있고,</br>
-  개인의 건강 데이터를 바탕으로 한 맞춤형 건강 관리 팁 제공으로 사용자들의 건강 관리를 도울 수 있을것이라 기대합니다.
-- 프로젝트 목표:</br>
-  1. 의료 응답</br>
-  사용자가 입력한 증상을 분석하여 가능한 질병을 예측하고, 적절한 행동(예: 병원 방문, 자가 치료)을 추천한다. 
-  2. 간단한 의학적 응답</br>
-  일반 건강 상식부터 특정 질병에 관한 정보까지, 신뢰할 수 있는 의료 데이터를 기반으로 한 다양한 정보를 제공한다.    
-  3. 건강 관리 팁</br>
-  개인의 건강 상태와 라이프스타일에 맞춘 맞춤형 건강 관리 팁을 제공한다.
+- 프로젝트 명: TransFaremrs(TF)
+- 프로젝트 소개: 러닝 유저들을 위한 러닝화 쇼핑 플랫폼 통한 가입 고객 이탈 예측 및 구매 동향 예측
+- 프로젝트 필요성(배경)
+ ![image](https://github.com/user-attachments/assets/437f0572-0be7-4849-a690-fa9a259a98a0)</br>
+위에 보이듯이 SNS상에서도 러닝은 큰 유행을 타며 이제는 일상이 되었습니다.</br>
+이로 인해 러닝을 즐기는 사람들을 위해서 주요 5대 브랜드의 런닝화 상품을 판매하는 쇼핑몰을 만들고,</br>
+가입고객 이탈 예측 및 구매 동향을 분석하여 관리파 페이지에 레포트로 제공하는 플랫폼을 개발하기로 하였습니다.
+- 프로젝트 목표: 가입 고객 이탈 예측 및 구매 동향 예측
+
+  
+  
+
 
 # 3. ERD 구성
+![image](https://github.com/user-attachments/assets/f5dafd4b-5ead-4b75-91c6-c00e7c5f16ec)
 
 # 4. 데이터 수집 방식 (크롤링)
 
@@ -83,7 +82,32 @@ SKN01-3nd-4Team
 # 8. Result (수행 결과)
 
 # 9. Tech Stack (기술 스택)
+<div align=left><h3>🕹️ Frontend</div>
+<div align=left>
+  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white">
+  <img src="https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=Vuetify&logoColor=white">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
+  <img src="https://img.shields.io/badge/D3.js-F9A03C?style=for-the-badge&logo=D3.js&logoColor=white">
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=for-the-badge&logo=GitHub Actions&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub Runner-2088FF?style=for-the-badge&logo=GitHub Runner&logoColor=white">
+</div>
 
+<div align=left><h3>🕹️ Backend</div>
+<div aling=left>
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+</div>
+
+<div align=left><h3>🕹️ AI Core</div>
+<div align=left>
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white">
+  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
+</div>
+  
 # 10. 테스트 보고서 (CI 테스트 결과)
 
 # 11. Agile Board (애자일 보드)
