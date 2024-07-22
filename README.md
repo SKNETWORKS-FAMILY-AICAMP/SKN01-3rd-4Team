@@ -53,8 +53,78 @@ SKN01-3nd-4Team
 # 4. 데이터 수집 방식 (크롤링)
 
 # 5. Streamlit 애플리케이션 사용 방식
+Streamlit은 데이터 과학 및 머신러닝 모델 시각화와 프로토타이핑을 위한 도구로, Python으로 작성된 간단한 코드를 사용하여 인터랙티브 웹 애플리케이션을 만들 수 있습니다. Streamlit을 사용하면 데이터 처리, 시각화, 분석을 손쉽게 웹에서 구현할 수 있습니다
 
+## 개발 흐름
+
+1. Backend (FastAPI API 서버)
+   * 도메인 정의 및 구현: 각 도메인의 비즈니스 로직을 FastAPI의 모델과 라우터로 정의하고 구현합니다.
+   * FastAPI 사용: FastAPI를 사용하여 RESTful API를 구현하고, 데이터베이스 연동 및 비즈니스 로직을 처리합니다.
+   * API 엔드포인트 설정: FastAPI의 라우터를 사용하여 API 엔드포인트를 정의하고, 필요한 리소스를 설정합니다.
+2. Frontend (Streamlit + Vuetify)
+   * Streamlit 애플리케이션 작성: Streamlit을 사용하여 인터랙티브한 웹 애플리케이션을 개발합니다.
+   * Vuetify 연동: Streamlit 내에서 Vuetify 스타일의 사용자 인터페이스를 구성합니다.
+   * API 호출: Streamlit 애플리케이션에서 FastAPI 엔드포인트로 HTTP 요청을 보내고 데이터를 처리합니다.
+## 코드
+```python
+import streamlit as st
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 데이터 로드 예시 (CSV 파일)
+@st.cache  # 캐싱하여 성능 향상
+def load_data(file_path):
+    data = pd.read_csv(file_path)
+    return data
+
+# 페이지 타이틀 설정
+st.title('데이터 시각화 예시')
+
+# 사이드바에 파일 업로드 기능 추가
+uploaded_file = st.sidebar.file_uploader("파일 업로드", type=['csv'])
+
+if uploaded_file is not None:
+    # 업로드한 파일을 DataFrame으로 로드
+    df = load_data(uploaded_file)
+
+    # 데이터셋 헤더 보기
+    st.subheader('데이터셋 샘플')
+    st.write(df.head())
+
+    # 데이터 요약 통계
+    st.subheader('데이터 요약 통계')
+    st.write(df.describe())
+
+    # 히스토그램
+    st.subheader('히스토그램')
+    selected_column = st.selectbox('컬럼 선택', df.columns)
+    plt.figure(figsize=(12, 6))
+    plt.hist(df[selected_column], bins=20, edgecolor='black')
+    st.pyplot()
+
+    # 산점도 행렬
+    st.subheader('산점도 행렬')
+    sns.pairplot(df)
+    st.pyplot()
+
+    # 히트맵
+    st.subheader('상관관계 히트맵')
+    corr = df.corr()
+    sns.heatmap(corr, annot=True)
+    st.pyplot()
+
+    # 추가적인 시각화 기법 추가 가능
+
+else:
+    st.warning('파일을 업로드해주세요.')
+
+```
 # 6. Manual Deploy (수동 배포 진행 절차)
+
+### 배포 사진 
+![](https://github.com/user-attachments/assets/dda442fd-cc91-4f2e-862c-0b8ed64aac10)
 
 ## Frontend (UI)
 
