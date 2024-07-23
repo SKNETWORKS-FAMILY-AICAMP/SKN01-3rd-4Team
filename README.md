@@ -212,8 +212,12 @@ else:
 </div>
   
 # 10. 테스트 보고서 (CI 테스트 결과)
+![image](https://github.com/user-attachments/assets/b874ef26-677c-46f5-8006-6ec276544cb4)
+![image](https://github.com/user-attachments/assets/d355c4d3-a31f-44db-8e23-fc29dfc1f8a0)
 
 # 11. Agile Board (애자일 보드)
+![image](https://github.com/user-attachments/assets/e241a2e2-56c8-4e8f-933b-3890e2ec9959)
+![image](https://github.com/user-attachments/assets/fa154f7c-a0dc-4049-b8b0-d7848aea9ada)
 
 # 12. Deploy Issue (배포 이슈)
 
