@@ -88,7 +88,14 @@
 
 ## FastAPI (AI Core Server)
 
+# 9. Autonomous Deploy (자동 배포 진행 절차)
+## Frontend (UI)
 
+## Backend (Server)
+
+## FastAPI (AI Core Server)
+  
+# 10. Result (수행 결과)
 **사이트 화면**
 ![image](https://github.com/user-attachments/assets/83f21247-56f8-41d8-ab75-1197fa020d03)
 ![image](https://github.com/user-attachments/assets/cd8d817f-5fe2-41bc-9f3f-8c4112efba4e)
@@ -105,16 +112,6 @@
 ![image](https://github.com/user-attachments/assets/f4970285-4242-4bfa-a107-2ec114ae76e2)
 ![image](https://github.com/user-attachments/assets/25ed50c0-76a3-4fb6-be93-c6e4dde1a708)
 ![image](https://github.com/user-attachments/assets/cf0a1767-2ab7-4d79-820e-06c80b0cf756)
-
-
-# 9. Autonomous Deploy (자동 배포 진행 절차)
-## Frontend (UI)
-
-## Backend (Server)
-
-## FastAPI (AI Core Server)
-  
-# 10. Result (수행 결과)
 
 # 11. Tech Stack (기술 스택)
 <div align=left><h3>🕹️ Frontend</div>
