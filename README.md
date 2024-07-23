@@ -98,6 +98,260 @@
 
 
 # 9. Autonomous Deploy (자동 배포 진행 절차)
+## Frontend
+### 🩵 CI 구성 🩵
+### 🌈 1 
+<img src="https://github.com/user-attachments/assets/b2b8eda5-9f59-497d-9595-b9c0b909e96c"/>
+
+### 🌈 2️
+<img src="https://github.com/user-attachments/assets/920ad1f8-cace-48bc-b616-cff5f7fe31da"/>
+
+### 🌈 3
+```bash
+name: CI (Continuous Integration)
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: Frontend CI
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        npm ci
+
+    - name: Create .env development for CI
+      run: |
+        pwd
+        echo "${{ secrets.ENV_DEVELOPMENT }}" > .env.development
+        cat .env.development
+
+    - name: Real Test
+      run: |
+        npm run test:unit
+
+    - name: send FRONTEND_TEST_FINISH_TRIGGER
+      run: |
+        curl -S -X POST https://api.github.com/repos/${{ github.repository }}/dispatches \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -u ${{ secrets.GHCR_TOKEN }} \
+          -d '{"event_type": "FRONTEND_TEST_FINISH_TRIGGER", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+```
+
+### 🌈 4
+<img src="https://github.com/user-attachments/assets/91ff498e-c28f-4062-9f38-593936610521"/>
+
+### 💙 CD 구성 💙
+### 🌈 1
+```bash
+name: CD (Continuous Deploy)
+
+on:
+  repository_dispatch:
+    types: [FRONTEND_TEST_FINISH_TRIGGER]
+
+jobs:
+  build:
+    name: build-app
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get Github Actions IP
+      id: ip
+      uses: haythem/public-ip@v1.2
+
+    - name: Configure AWS IAM Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        npm ci --legacy-peer-deps
+
+    - name: Create .env.production for Continuous Deploy
+      run: |
+        echo "${{ secrets.ENV_PRODUCTION }}" > .env.production
+        cat .env.production
+
+    - name: Build
+      run: |
+        npm run build
+        ls
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.5.0
+      with:
+        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+    - name: Add Github Actions IP to Security Group
+      run: |
+        aws ec2 authorize-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+
+    - name: SCP Action
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST_IP }}
+        username: ec2-user
+        key: ${{ secrets.PRIVATE_KEY }}
+        source: "./dist/**"
+        target: "/home/ec2-user/text-farmer/actions-frontend"
+
+    - name: Remove Github Actions IP From Security Group
+      run: |
+        aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+
+    - name: SSH Agent Cleanup
+      if: ${{ always() }}
+      uses: webfactory/ssh-agent@v0.5.0
+      with:
+        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+  deploy:
+    name: Deploy to Production
+    needs: build
+    runs-on: [ self-hosted, deploy-text-farmer-frontend ]
+    steps:
+      - name: Get Github Actions IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+        
+      - name: Configure AWS IAM Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: Add Github Actions IP to Security Group
+        run: |
+          aws ec2 authorize-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+    
+      - name: Deploy to Production
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST_IP }}
+          username: ec2-user
+          key: ${{ secrets.PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            pwd
+            cd /home/ec2-user/text-farmer/vue-frontend
+            cp -r /home/ec2-user/text-farmer/actions-frontend/dist/* ./html/
+
+            docker image prune -f
+            docker logout
+
+            docker-compose up -d
+
+      - name: Remove Github Actions IP From Security Group
+        run: |
+          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+```
+
+### 🌈 2
+<img src="https://github.com/user-attachments/assets/e875aa03-94cf-44ea-9dfc-53095f49e699"/>
+
+### 🌈 3
+<img src="https://github.com/user-attachments/assets/45af381a-97ce-4104-b5fd-3226fbf9cb47"/>
+
+### 🌈 4
+<img src="https://github.com/user-attachments/assets/08e78c76-2d55-4cc5-bc98-fda319631720"/>
+
+### 🌈 5
+<img src="https://github.com/user-attachments/assets/05db1246-1846-46f1-a853-b5bfbdaa208c"/>
+
+### 🌈 6
+<img src="https://github.com/user-attachments/assets/86fe880c-c611-4090-ae6d-c0187b518caa"/>
+
+### 🌈 7
+```bash
+mkdir frontend-action-runner
+cd frontend-action-runner
+```
+
+### 🌈 7
+```bash
+curl -o actions-runner-linux-arm64-2.317.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.317.0/actions-runner-linux-arm64-2.317.0.tar.gz
+```
+
+### 🌈 8
+```bash
+sudo yum install perl-Digest-SHA -y
+```
+
+### 🌈 9
+```bash
+tar xzf ./actions-runner-linux-arm64-2.317.0.tar.gz
+```
+
+### 🌈 10
+<img src="https://github.com/user-attachments/assets/c88291d6-d8af-45a5-801f-4d7152a8aa01"/>
+
+### 🌈 11
+```bash
+sudo yum install libicu -y
+```
+
+### 🌈 12
+<img src="https://github.com/user-attachments/assets/400a577a-f6ea-4bc4-84df-82b252d90fa0"/>
+
+### 🌈 13
+<img src="https://github.com/user-attachments/assets/94c7a2f9-c89a-4af9-a729-a1230064cd07"/>
+
+### 🌈 14
+<img src="https://github.com/user-attachments/assets/ff71d1cb-93cb-445d-97dc-ba0ea5b439fc"/>
+
+### 🌈 15
+<img src="https://github.com/user-attachments/assets/785a3687-a5ec-493e-9aab-8474ae2f1880"/>
+
+### 🌈 16
+<img src="https://github.com/user-attachments/assets/edd7b035-84fc-47d0-a399-3c8f08de07d8"/>
+
+### 🌈 17
+```bash
+nohup ./run.sh > run.log 2>&1 &
+```
 
 # 10. Result (수행 결과)
 
