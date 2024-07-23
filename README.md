@@ -127,15 +127,15 @@
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
   <img src="https://img.shields.io/badge/D3.js-F9A03C?style=for-the-badge&logo=D3.js&logoColor=white">
   <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
-  <img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=for-the-badge&logo=GitHub Actions&logoColor=white">
-  <img src="https://img.shields.io/badge/GitHub Runner-2088FF?style=for-the-badge&logo=GitHub Runner&logoColor=white">
 </div>
 
 <div align=left><h3>🕹️ Backend</div>
 <div aling=left>
   <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white">
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=Pandas&logoColor=white">
+  <img src="https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=Redis&logoColor=white">
+  <img src="https://img.shields.io/badge/KakaoDev-221E68?style=for-the-badge&logo=Kakao&logoColor=white">
 </div>
 
 <div align=left><h3>🕹️ AI Core</div>
@@ -144,15 +144,46 @@
   <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 </div>
+
+<div align=left><h3>🕹️ Infra</div>
+<div align="left">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=for-the-badge&logo=GitHub Actions&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub Runner-2088FF?style=for-the-badge&logo=GitHub Runner&logoColor=white">
+</div>
                                                                                                        
 
 # 12. Deploy Issue (배포 이슈)
-### 배포 사진 
-![](https://github.com/user-attachments/assets/dda442fd-cc91-4f2e-862c-0b8ed64aac10)
+- **FastAPI 수동 배포 중 Docker Image 오류**
+  ![image](https://github.com/user-attachments/assets/aacbbebb-578a-4baf-94a9-1de2f7199b89)
+  - **오류** : "Error response from daemon: mainfest unknown"
+  - **오류 원인** : 진행할 Docker Image가 없거나 사용이 불가한 상황
+  - **오류 해결** : Docker Build 과정에서 사용한 Github 계정은 Login할 때도 동일하게 사용
+    - Docker Build를 진행하는 프로젝트에서도 Docker Login <br>
+      ```bash
+      echo "GHCR토큰" | docker login ghcr.io -u 계정 --password-stdin
+      ```
+    - AWS 접속 후 docker-compose.yml 파일 구동 시에도 Docker Login <br>
+      ```bash
+      echo "GHCR토큰" | docker login ghcr.io -u 계정 --password-stdin
+      ```
+    - .env로 관리하는 정보에 Github 계정은 docker build 구성할 때 사용한 계정
+
+- **Frontend에서 Backend 요청을 받지 못하는 오류**
+  - **오류** : Bakcend가 실행되지 않음
+  - **오류 원인** : 진행할 Docker Image가 없거나 사용이 불가한 상황
+  - **오류 해결** : Docker Build 과정에서 사용한 Github 계정은 Login할 때도 동일하게 사용
+    - Docker Build를 진행하는 프로젝트에서도 Docker Login <br>
+      
+echo "GHCR토큰" | docker login ghcr.io -u 계정 --password-stdin
+    - AWS 접속 후 docker-compose.yml 파일 구동 시에도 Docker Login <br>
+      
+echo "GHCR토큰" | docker login ghcr.io -u 계정 --password-stdin
+    - .env로 관리하는 정보에 Github 계정은 docker build 구성할 때 사용한 계정
+
 
 # 13. 테스트 보고서 (CI 테스트 결과)
-![image](https://github.com/user-attachments/assets/b874ef26-677c-46f5-8006-6ec276544cb4)
-![image](https://github.com/user-attachments/assets/d355c4d3-a31f-44db-8e23-fc29dfc1f8a0)
 
 # 14. 한 줄 회고
 ### 🌊 이경민
