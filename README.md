@@ -222,20 +222,23 @@ AWS와 같은 클라우드 환경에 접속하여 환경 변수 및 기타 설�
       ```
     - .env로 관리하는 정보에 Github 계정은 docker build 구성할 때 사용한 계정
 
-- **Frontend에서 Backend 요청을 받지 못하는 오류**
-  - **오류** : Bakcend가 실행되지 않음
-  - **오류 원인** : 진행할 Docker Image가 없거나 사용이 불가한 상황
-  - **오류 해결** : Docker Build 과정에서 사용한 Github 계정은 Login할 때도 동일하게 사용
-    - Docker Build를 진행하는 프로젝트에서도 Docker Login <br>
-      
-echo "GHCR토큰" | docker login ghcr.io -u 계정 --password-stdin
-    - AWS 접속 후 docker-compose.yml 파일 구동 시에도 Docker Login <br>
-      
-echo "GHCR토큰" | docker login ghcr.io -u 계정 --password-stdin
-    - .env로 관리하는 정보에 Github 계정은 docker build 구성할 때 사용한 계정
-
 
 # 13. 테스트 보고서 (CI 테스트 결과)
+<table align="center">
+  <tbody>
+    <tr>
+      <td align="center"><b>Frontend</b></td>
+      <td align="center"><b>Backend</b></td>
+      <td align="center"><b>FastAPI</b></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/4b2b88ff-7832-4bf1-9733-dea2ea70a4a0"/></td>
+      <td><img src="https://github.com/user-attachments/assets/dbc03d11-ea42-4556-8793-0a2628a2964c"/></td>
+      <td><img src="https://github.com/user-attachments/assets/e0b19c9b-31e6-429a-8668-fc1d7d605854"/></td>
+    </tr>
+  </tbody>
+</table>
+
 
 # 14. 한 줄 회고
 ### 🌊 이경민
