@@ -107,6 +107,29 @@ CI/CD는 현대 소프트웨어 개발에서 필수적인 도구로, 개발 속�
 
 # 8. Manual Deploy(수동 배포 진행 절차)
 ## Frontend (UI)
+Vue 프로젝트 배경 설명
+Vue.js는 웹 애플리케이션의 사용자 인터페이스를 만드는 데 도움을 주는 도구입니다. Vue 프로젝트를 로컬 환경에서 빌드하고, AWS EC2 인스턴스에 수동으로 배포하는 절차를 설명합니다.
+
+Step 1: 프로젝트 폴더 생성 및 구성
+우선, 프로젝트를 저장할 새로운 폴더인 vue-frontend를 만듭니다. 여기에는 Vue 프로젝트의 구성 파일과 HTML 파일이 저장될 예정입니다.
+
+Step 2: 로컬에서 빌드 준비
+로컬 컴퓨터에서 Vue 프로젝트의 소스 코드를 다운로드합니다. 프로젝트 폴더로 이동한 후, 필요한 소프트웨어 패키지를 설치해야 합니다. 이 작업은 명령어를 사용하여 수행됩니다.
+
+```bash
+npm install --legacy-peer-deps
+```
+Step 3: 환경 설정 및 애플리케이션 빌드
+애플리케이션을 빌드하기 전에, .env 파일을 수정하여 애플리케이션에서 사용할 환경 변수를 설정해야 합니다. 이후에는 다음 명령어를 사용하여 Vue 프로젝트를 실제로 빌드합니다. 이 과정을 통해 프로젝트는 사용할 수 있도록 준비됩니다.
+
+Step 4: 애플리케이션 배포
+이제, 프로젝트의 모든 파일이 모여 있는 dist 폴더로 이동합니다. 여기에는 이전 단계에서 생성된 파일들이 모여 있습니다. SCP 명령어를 사용하여 이 파일들을 AWS EC2 인스턴스로 전송합니다. 이 과정은 프로젝트를 클라우드 서버에 저장하여, 웹사이트를 통해 사용자들이 사용할 수 있도록 만드는 과정입니다.
+
+```bash
+scp -i "pem키(상대경로 혹은 절대경로)" -r * ec2-user@AWS_IP:/home/ec2-user/프로젝트팀/vue-frontend/html/
+```
+Step 5: Docker를 이용한 배포
+마지막으로, Docker의 도움을 받아 Vue 애플리케이션을 클라우드 서버에 배포합니다. Docker는 애플리케이션을 포장하고 실행하기 위한 도구로, 이 과정을 통해 애플리케이션의 환경 설정과 의존성을 효율적으로 관리할 수 있습니다.
 
 ## Backend (Server)
 1. 개발자가 GitHub 저장소에 작업내용을 푸쉬하거나 PR을 생성하고 관리자가 이를 승인합니다. (이 이벤트는 GitHub Actions 워크플로우를 트리거합니다.)
@@ -151,8 +174,177 @@ AWS와 같은 클라우드 환경에 접속하여 환경 변수 및 기타 설�
 
 # 9. Autonomous Deploy (자동 배포 진행 절차)
 수동 배포는 개발자가 직접 로컬 환경에서 빌드하고 클라우드로 배포하는 과정을 수행하는 반면, 자동 배포는 코드 변경이 감지되면 CI/CD 파이프라인을 통해 자동으로 빌드, 테스트, 배포되어 개발 생산성과 안정성을 높입니다.
+## Frontend (UI) 자동 배포 과정
+### CI/CD 전체 흐름
+- 개발자 작업 및 테스트: 각 도메인에 맞춰 백로그 작업을 진행합니다. 테스트가 CI(Continuous Integration)를 통과하면 PR(Pull Request)을 승인합니다.
 
+- CI에서의 빌드: CI가 통과되면 CD(Continuous Deployment)로 넘어가서 배포가 시작됩니다. 이때 npm build를 실행하여 프로젝트를 빌드합니다.
 
+- 빌드 결과물 생성: 빌드 후에는 HTML, CSS, JavaScript, 그리고 이미지 등의 리소스가 생성됩니다.
+
+- AWS로의 전송: 생성된 정보는 SCP(Secure Copy Protocol)를 사용하여 AWS EC2 인스턴스로 전송됩니다.
+
+- Nginx 설정 및 구동: 전송된 파일은 EC2 인스턴스에서 Nginx를 사용하여 호스팅됩니다. 이때 docker-compose.yml 파일을 사용하여 Nginx를 구성합니다. Nginx는 어떤 파일들을 서빙할지 설정하며, 이 정보들은 conf 폴더에 저장됩니다.
+
+- 배포: docker-compose up -d 명령을 통해 Nginx가 설정된 후, Frontend 코드가 EC2 인스턴스에서 동작합니다.
+
+CI 설정
+```yaml
+name: CI (Continuous Integration)
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: Frontend CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      - name: Trigger CD Workflow
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type": "FRONTEND_TEST_FINISH_TRIGGER"}'
+```
+
+CD 설정
+```yaml
+name: CD (Continuous Deploy)
+
+on:
+  repository_dispatch:
+    types: [FRONTEND_TEST_FINISH_TRIGGER]
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /path/to/project
+            rm -rf *
+            scp -r /path/to/frontend/dist/* .
+            docker-compose up -d
+```
+## Backend (Server)
+Django CI 설정
+기본 설정
+GitHub Actions를 이용하여 Django 프로젝트의 CI를 설정합니다. main 브랜치에서 작업을 수행하며, 파일 형식은 YAML을 사용합니다.
+
+Django 테스트 자동화
+개발 초기 단계에서 Django 테스트를 자동화하여 CI 파이프라인에 통합합니다. 이를 위해 find_test.sh 스크립트를 사용하여 모든 테스트 파일을 자동으로 인식합니다.
+
+```bash
+#!/usr/bin/env bash
+
+TEST_DIRS=$(find . -path ./.venv -prune -o -type d -name 'tests' -print)
+
+APP_TESTS=()
+
+for TEST_DIR in $TEST_DIRS; do
+  APP_NAME=$(basename $(dirname $TEST_DIR))
+  TEST_FILES=$(find $TEST_DIR -type f -name 'test*.py')
+
+  if [ -z "$TEST_FILES" ]; then
+    continue
+  fi
+
+  APP_TESTS+=("${APP_NAME}.tests")
+done
+
+echo "${APP_TESTS[@]}"
+```
+
+Django CD 설정
+기본 설정
+CI와 유사하게 GitHub Actions를 활용하여 Django 프로젝트의 CD를 설정합니다.
+
+Docker 이미지 빌드 및 배포
+빌드 단계에서 다중 환경을 지원하기 위해 Docker Buildx를 사용하여 ARM64 아키텍처의 Docker 이미지를 빌드하고 GitHub Container Registry(GHCR)에 푸시합니다.
+
+```yaml
+- name: Build and push Docker image
+  run: |
+    cd <프로젝트 이름>
+    docker buildx build --platform linux/arm64 -f Dockerfile -t ghcr.io/${{ github.actor }}/<빌드하고자 하는 환경 이름>:latest --push .
+```
+
+GitHub Actions Runner 설정
+기본 설정
+GitHub Actions Runner를 설정하여 Docker 컨테이너와 호환되는 Linux 환경에서 프로젝트를 실행합니다. ARM64 아키텍처를 선택하여 다양한 환경에서 동작하도록 합니다.
+
+실행 및 배경 실행
+GitHub Actions Runner를 배경에서 실행하도록 설정하여 지속적으로 프로젝트의 상태를 모니터링합니다.
+```bash
+./run.sh
+nohup ./run.sh > run.log 2>&1 &
+```
+
+Docker Compose 설정
+기본 설정
+프로젝트의 복잡성을 관리하기 위해 Docker Compose를 사용하여 Django 애플리케이션과 필수 백엔드 서비스를 구성합니다.
+
+```yaml
+version: '3'
+services:
+  django:
+    container_name: django
+    image: ghcr.io/${GITHUB_ACTOR}/tf-django-server:latest
+    command: /app/wait-for-it.sh db:3306 -t 15 -- sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
+      # 환경 변수들
+    networks:
+      - app-network
+
+  # 다른 서비스들
+networks:
+  app-network:
+    driver: bridge
+```
 
 # 10. Result (수행 결과)
 
