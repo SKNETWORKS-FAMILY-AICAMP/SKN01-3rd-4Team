@@ -60,7 +60,7 @@
 작은 것 같지만 이와 같은 것들이 쌓여서 아주 기민하고 민첩한 조직을 만들어 냅니다.
 ```
 
-# 4. Backend 애자일 보드
+# 4. Backend 애자일 보드 - 요구사항 정의서
 <img src="https://github.com/user-attachments/assets/d749633c-5a18-423f-a709-4b1dadcef73b" />
 
 <!-- ## 더미데이터 생성 방식
@@ -72,10 +72,10 @@
 ![image](https://github.com/user-attachments/assets/56cdf0c6-366c-4900-b937-9bb92c845f17)</br>
 -->
 
-# 5. Frontend 애자일 보드
+# 5. Frontend 애자일 보드 - 화면 설계서
 <img src="https://github.com/user-attachments/assets/13856381-cd4e-453e-a1f7-a66a8c0e8744" />
 
-# 6. FastAPI 애자일 보드
+# 6. FastAPI 애자일 보드 - AI 서빙 설계서
 <img src="https://github.com/user-attachments/assets/41b3c5e2-0784-46cb-8e09-cf494f34ce58" />
 
 # 7. 시스템 구성도
@@ -83,19 +83,24 @@
 
 # 8. Manual Deploy(수동 배포 진행 절차)
 ## Frontend (UI)
-
+![image](https://github.com/user-attachments/assets/e241a2e2-56c8-4e8f-933b-3890e2ec9959)
+![image](https://github.com/user-attachments/assets/fa154f7c-a0dc-4049-b8b0-d7848aea9ada)
 ## Backend (Server)
-
+1. 개발자가 GitHub 저장소에 작업내용을 푸쉬하거나 PR을 생성하고 관리자가 이를 승인합니다. (이 이벤트는 GitHub Actions 워크플로우를 트리거합니다.)
+2. GitHub Actions 에서 CI(테스트)를 진행하고 통과하면 npm build를 통해 Docker 이미지를 빌드합니다. (빌드 결과로 html, css, javascript, 리소스 등이 나옵니다.)
+3. 빌드가 완료되면 GHCR(GitHub Container Registry)에 push합니다.
+4. GitHub Actions에서 AWS Security Group설정을 통해 AWS 서버와 연동합니다.
+5. GHCR에서 연동된 AWS 서비스로 이미지를 pull(배포) 합니다.
+6. AWS서버에서 이미지를 docker-compose로 컨테이너화합니다.
+7. nginx를 구동하여 frontend코드가 동작합니다. (nginx는 구동시 docker-compose.yml을 참조하여 어떤 javascript, html, css를 참조할지 판정합니다.)
+8. 이 과정이 완료되면 사용자가 AWS서버에 접속하여 서비스를 사용할 수 있습니다.
 ## FastAPI (AI Core Server)
+
 
 # 9. Autonomous Deploy (자동 배포 진행 절차)
-## Frontend (UI)
 
-## Backend (Server)
-
-## FastAPI (AI Core Server)
-  
 # 10. Result (수행 결과)
+
 **사이트 화면**
 ![image](https://github.com/user-attachments/assets/83f21247-56f8-41d8-ab75-1197fa020d03)
 ![image](https://github.com/user-attachments/assets/cd8d817f-5fe2-41bc-9f3f-8c4112efba4e)
@@ -139,10 +144,15 @@
   <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 </div>
+                                                                                                       
 
-# 12. 테스트 보고서
+# 12. Deploy Issue (배포 이슈)
+### 배포 사진 
+![](https://github.com/user-attachments/assets/dda442fd-cc91-4f2e-862c-0b8ed64aac10)
 
-# 13. Deploy Issue (배포 이슈)
+# 13. 테스트 보고서 (CI 테스트 결과)
+![image](https://github.com/user-attachments/assets/b874ef26-677c-46f5-8006-6ec276544cb4)
+![image](https://github.com/user-attachments/assets/d355c4d3-a31f-44db-8e23-fc29dfc1f8a0)
 
 # 14. 한 줄 회고
 ### 🌊 이경민
@@ -153,13 +163,3 @@ CI/CD 도입으로 배포 시간이 크게 단축되어 팀 전체가 성취감�
 자동화된 파이프라인 덕분에 팀원들과의 협업이 한결 수월해졌고, 문제 해결 과정에서도 큰 만족감을 느꼈다.
 ### 🌾 최명근
 지속적인 통합 덕분에 작은 변화들도 빠르게 배포할 수 있어 좋았지만, 예상치 못한 문제들이 발생할 때마다 긴장감이 느껴졌다.
-
-<!-- 1. 개발자가 GitHub 저장소에 작업내용을 푸쉬하거나 PR을 생성하고 관리자가 이를 승인합니다. (이 이벤트는 GitHub Actions 워크플로우를 트리거합니다.)
-2. GitHub Actions 에서 CI(테스트)를 진행하고 통과하면 npm build를 통해 Docker 이미지를 빌드합니다. (빌드 결과로 html, css, javascript, 리소스 등이 나옵니다.)
-3. 빌드가 완료되면 GHCR(GitHub Container Registry)에 push합니다.
-4. GitHub Actions에서 AWS Security Group설정을 통해 AWS 서버와 연동합니다.
-5. GHCR에서 연동된 AWS 서비스로 이미지를 pull(배포) 합니다.
-6. AWS서버에서 이미지를 docker-compose로 컨테이너화합니다.
-7. nginx를 구동하여 frontend코드가 동작합니다. (nginx는 구동시 docker-compose.yml을 참조하여 어떤 javascript, html, css를 참조할지 판정합니다.)
-8. 이 과정이 완료되면 사용자가 AWS서버에 접속하여 서비스를 사용할 수 있습니다. -->
-
