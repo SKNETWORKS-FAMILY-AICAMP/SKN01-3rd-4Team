@@ -95,6 +95,10 @@ CI/CD는 현대 소프트웨어 개발에서 필수적인 도구로, 개발 속�
 # 5. Frontend 애자일 보드 - 화면 설계서
 <img src="https://github.com/user-attachments/assets/13856381-cd4e-453e-a1f7-a66a8c0e8744" />
 
+![image](https://github.com/user-attachments/assets/e241a2e2-56c8-4e8f-933b-3890e2ec9959)
+
+![image](https://github.com/user-attachments/assets/fa154f7c-a0dc-4049-b8b0-d7848aea9ada)
+
 # 6. FastAPI 애자일 보드 - AI 서빙 설계서
 <img src="https://github.com/user-attachments/assets/41b3c5e2-0784-46cb-8e09-cf494f34ce58" />
 
@@ -103,8 +107,7 @@ CI/CD는 현대 소프트웨어 개발에서 필수적인 도구로, 개발 속�
 
 # 8. Manual Deploy(수동 배포 진행 절차)
 ## Frontend (UI)
-![image](https://github.com/user-attachments/assets/e241a2e2-56c8-4e8f-933b-3890e2ec9959)
-![image](https://github.com/user-attachments/assets/fa154f7c-a0dc-4049-b8b0-d7848aea9ada)
+
 ## Backend (Server)
 1. 개발자가 GitHub 저장소에 작업내용을 푸쉬하거나 PR을 생성하고 관리자가 이를 승인합니다. (이 이벤트는 GitHub Actions 워크플로우를 트리거합니다.)
 2. GitHub Actions 에서 CI(테스트)를 진행하고 통과하면 npm build를 통해 Docker 이미지를 빌드합니다. (빌드 결과로 html, css, javascript, 리소스 등이 나옵니다.)
