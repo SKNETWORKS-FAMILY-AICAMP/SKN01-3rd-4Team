@@ -33,43 +33,49 @@
   </tbody>
 </table>
 
+<br><br><br>
+
 # 2. Introduction Project (프로젝트 개요)
 ### 🧡 소개 🧡
-러닝 유저들을 위한 러닝화 쇼핑 플랫폼을 CI/CD 구축하기 
+**러닝 유저들을 위한 러닝화 쇼핑 플랫폼을 CI/CD 구축하기**  <br><br>
 ### 💚 필요성 💚
  ![image](https://github.com/user-attachments/assets/437f0572-0be7-4849-a690-fa9a259a98a0)</br>
 위에 보이듯이 SNS상에서도 러닝은 큰 유행을 타며 이제는 일상이 되었습니다.</br>
 이로 인해 러닝을 즐기는 사람들을 위해서 주요 5대 브랜드의 런닝화 상품을 판매하는 쇼핑몰을 만들고,</br>
-가입고객 이탈 예측 및 구매 동향을 분석하여 관리파 페이지에 레포트로 제공하는 플랫폼을 개발하기로 하였습니다.
+가입고객 이탈 예측 및 구매 동향을 분석하여 관리파 페이지에 레포트로 제공하는 플랫폼을 개발하기로 하였습니다.  <br><br>
+### 💛 주요 서비스 💛
+- 러닝화 판매
+- 사용자 구매 동향 분석을 통한 러닝화 추천
+- 유저들과의 소통
+- 고객의 이탈 예측
 
-## CI/CD란 ?
-대충 CI/CD 관련해서 작성
-CI/CD는 현대 소프트웨어 개발에서 필수적인 도구로, 개발 속도를 높이고 품질을 유지하는 데 중요한 역할을 합니다.
+ <br><br>
+ 
+### ℹ️ CI/CD구축한 이유
+```
+CI/CD는 개발 속도를 높이고 품질을 유지하는 데 중요한 역할을 합니다.
 
-### CI/CD의 중요성
+개발, 테스트, 배포 과정을 자동화하여 개발팀의 생산성을 높이며,
+작은 기능 단위로 빈번히 배포하여 시스템 전체의 안정성을 유지하고 문제를 조기에 해결할 수 있습니다.
+빠르게 변화하는 시장 요구를 충족시키기 위해 새로운 기능을 신속하게 배포할 수 있으며, 
+일관된 개발 및 배포 프로세스를 유지하여 개발자들 간의 협업을 촉진하고 코드 품질을 유지할 수 있습니다.
 
-**CI (Continuous Integration)**
+* CI (Continuous Integration)
+  - 자동화된 테스트와 빌드 및 통합 주기 단축
 
-- **자동화된 테스트와 빌드:** 코드 변경 시 자동으로 테스트와 빌드를 실행하여 오류를 빠르게 발견하고 수정할 수 있습니다.
-- **통합 주기 단축:** 작은 변경 사항을 자주 통합하여 개발자들이 항상 최신 코드를 사용할 수 있도록 합니다.
+* CD (Continuous Deployment/Continuous Delivery)
+  - 자동 배포 및 피드백 수렴
+```
 
-**CD (Continuous Deployment/Continuous Delivery)**
-
-- **자동 배포:** 코드가 검증을 통과하면 자동으로 사용자에게 배포되어 새로운 기능을 빠르게 제공할 수 있습니다.
-- **피드백 수렴:** 실제 사용자들로부터 빠르게 피드백을 받아 개선 사항을 신속하게 반영할 수 있습니다.
-
-### CI/CD의 필요성
-
-- **효율성 향상:** 개발, 테스트, 배포 과정을 자동화하여 개발팀의 생산성을 높입니다.
-- **위험 감소:** 작은 기능 단위로 빈번히 배포하여 시스템 전체의 안정성을 유지하고 문제를 조기에 해결할 수 있습니다.
-- **신속한 시장 반응:** 빠르게 변화하는 시장 요구를 충족시키기 위해 새로운 기능을 신속하게 배포할 수 있습니다.
-- **팀 협업 강화:** 일관된 개발 및 배포 프로세스를 유지하여 개발자들 간의 협업을 촉진하고 코드 품질을 유지할 수 있습니다.
-
+<br><br><br>
 
 # 3. ERD 구성
 ![image](https://github.com/user-attachments/assets/f5dafd4b-5ead-4b75-91c6-c00e7c5f16ec)
 
-## 애자일 보드를 사용하는 이유
+<br><br><br>
+
+# 4. Backend 애자일 보드 - 요구사항 정의서
+### ℹ️ 애자일 보드를 사용하는 이유
 ```
 과거 정의서들을 일일히 작성하였지만 빠른 속도로 무언가를 개발하는데 한계가 있습니다.
 처음부터 많은 것들을 빌드업하면서 빠른 생산성을 기반으로 움직이려면 반드시 애자일해야합니다.
@@ -79,8 +85,6 @@ CI/CD는 현대 소프트웨어 개발에서 필수적인 도구로, 개발 속�
 고로 빠르게 팀원들과 협업 할 수 있고 소통 비용을 최소화시킬 수 있습니다.
 작은 것 같지만 이와 같은 것들이 쌓여서 아주 기민하고 민첩한 조직을 만들어 냅니다.
 ```
-
-# 4. Backend 애자일 보드 - 요구사항 정의서
 <img src="https://github.com/user-attachments/assets/d749633c-5a18-423f-a709-4b1dadcef73b" />
 
 <!-- ## 더미데이터 생성 방식
@@ -92,46 +96,60 @@ CI/CD는 현대 소프트웨어 개발에서 필수적인 도구로, 개발 속�
 ![image](https://github.com/user-attachments/assets/56cdf0c6-366c-4900-b937-9bb92c845f17)</br>
 -->
 
+<br><br><br>
+
 # 5. Frontend 애자일 보드 - 화면 설계서
 <img src="https://github.com/user-attachments/assets/13856381-cd4e-453e-a1f7-a66a8c0e8744" />
 
-![image](https://github.com/user-attachments/assets/e241a2e2-56c8-4e8f-933b-3890e2ec9959)
-
-![image](https://github.com/user-attachments/assets/fa154f7c-a0dc-4049-b8b0-d7848aea9ada)
+<br><br><br>
 
 # 6. FastAPI 애자일 보드 - AI 서빙 설계서
 <img src="https://github.com/user-attachments/assets/41b3c5e2-0784-46cb-8e09-cf494f34ce58" />
 
+<br><br><br>
+
 # 7. 시스템 구성도
 ![image](https://github.com/user-attachments/assets/612d28ce-3f5d-4816-85d3-2269029b16f1)
 
+<br><br><br>
+
 # 8. Manual Deploy(수동 배포 진행 절차)
-## Frontend (UI)
-Vue 프로젝트 배경 설명
-Vue.js는 웹 애플리케이션의 사용자 인터페이스를 만드는 데 도움을 주는 도구입니다. Vue 프로젝트를 로컬 환경에서 빌드하고, AWS EC2 인스턴스에 수동으로 배포하는 절차를 설명합니다.
-
-Step 1: 프로젝트 폴더 생성 및 구성
-우선, 프로젝트를 저장할 새로운 폴더인 vue-frontend를 만듭니다. 여기에는 Vue 프로젝트의 구성 파일과 HTML 파일이 저장될 예정입니다.
-
-Step 2: 로컬에서 빌드 준비
-로컬 컴퓨터에서 Vue 프로젝트의 소스 코드를 다운로드합니다. 프로젝트 폴더로 이동한 후, 필요한 소프트웨어 패키지를 설치해야 합니다. 이 작업은 명령어를 사용하여 수행됩니다.
-
+## 📍 Frontend (UI)
+**Vue 프로젝트 배경 설명**
+Vue.js는 웹 애플리케이션의 사용자 인터페이스를 만드는 데 도움을 주는 도구입니다.
+아래는 Vue 프로젝트를 로컬 환경에서 빌드하고, AWS EC2 인스턴스에 수동으로 배포하는 절차입니다.
 ```bash
-npm install --legacy-peer-deps
+1. 프로젝트 폴더 생성 및 구성
+  프로젝트를 저장할 새로운 폴더인 vue-frontend를 만듭니다.
+  여기에는 Vue 프로젝트의 구성 파일과 HTML 파일이 저장될 예정입니다.
+
+2. 로컬에서 빌드 준비
+  로컬 컴퓨터에서 Vue 프로젝트의 소스 코드를 다운로드합니다.
+  프로젝트 폴더로 이동한 후, 필요한 소프트웨어 패키지를 설치해야 합니다.
+  이 작업은 명령어를 사용하여 수행됩니다.
+
+    npm install --legacy-peer-deps
+
+3. 환경 설정 및 애플리케이션 빌드
+  애플리케이션을 빌드하기 전에, .env 파일을 수정하여 애플리케이션에서 사용할 환경 변수를 설정해야 합니다.
+  이후에는 다음 명령어를 사용하여 Vue 프로젝트를 실제로 빌드합니다.
+  -> 이 과정을 통해 프로젝트는 사용할 수 있도록 준비됩니다.
+
+4. 애플리케이션 배포
+  프로젝트의 모든 파일이 모여 있는 dist 폴더로 이동합니다.(이전 단계에서 생성된 파일들이 모여 있습니다.)
+  SCP 명령어를 사용하여 이 파일들을 AWS EC2 인스턴스로 전송합니다.
+  -> 이 과정은 프로젝트를 클라우드 서버에 저장하여, 웹사이트를 통해 사용자들이 사용할 수 있도록 만드는 과정입니다.
+
+    scp -i "pem키(상대경로 혹은 절대경로)" -r * ec2-user@AWS_IP:/home/ec2-user/프로젝트팀/vue-frontend/html/
+
+5. Docker를 이용한 배포
+  Docker의 도움을 받아 Vue 애플리케이션을 클라우드 서버에 배포합니다.
+  -> Docker는 애플리케이션을 포장하고 실행하기 위한 도구로, 이 과정을 통해 애플리케이션의 환경 설정과 의존성을 효율적으로 관리할 수 있습니다.
 ```
-Step 3: 환경 설정 및 애플리케이션 빌드
-애플리케이션을 빌드하기 전에, .env 파일을 수정하여 애플리케이션에서 사용할 환경 변수를 설정해야 합니다. 이후에는 다음 명령어를 사용하여 Vue 프로젝트를 실제로 빌드합니다. 이 과정을 통해 프로젝트는 사용할 수 있도록 준비됩니다.
 
-Step 4: 애플리케이션 배포
-이제, 프로젝트의 모든 파일이 모여 있는 dist 폴더로 이동합니다. 여기에는 이전 단계에서 생성된 파일들이 모여 있습니다. SCP 명령어를 사용하여 이 파일들을 AWS EC2 인스턴스로 전송합니다. 이 과정은 프로젝트를 클라우드 서버에 저장하여, 웹사이트를 통해 사용자들이 사용할 수 있도록 만드는 과정입니다.
 
+## 📍 Backend (Server)
 ```bash
-scp -i "pem키(상대경로 혹은 절대경로)" -r * ec2-user@AWS_IP:/home/ec2-user/프로젝트팀/vue-frontend/html/
-```
-Step 5: Docker를 이용한 배포
-마지막으로, Docker의 도움을 받아 Vue 애플리케이션을 클라우드 서버에 배포합니다. Docker는 애플리케이션을 포장하고 실행하기 위한 도구로, 이 과정을 통해 애플리케이션의 환경 설정과 의존성을 효율적으로 관리할 수 있습니다.
-
-## Backend (Server)
 1. 개발자가 GitHub 저장소에 작업내용을 푸쉬하거나 PR을 생성하고 관리자가 이를 승인합니다. (이 이벤트는 GitHub Actions 워크플로우를 트리거합니다.)
 2. GitHub Actions 에서 CI(테스트)를 진행하고 통과하면 npm build를 통해 Docker 이미지를 빌드합니다. (빌드 결과로 html, css, javascript, 리소스 등이 나옵니다.)
 3. 빌드가 완료되면 GHCR(GitHub Container Registry)에 push합니다.
@@ -140,65 +158,85 @@ Step 5: Docker를 이용한 배포
 6. AWS서버에서 이미지를 docker-compose로 컨테이너화합니다.
 7. nginx를 구동하여 frontend코드가 동작합니다. (nginx는 구동시 docker-compose.yml을 참조하여 어떤 javascript, html, css를 참조할지 판정합니다.)
 8. 이 과정이 완료되면 사용자가 AWS서버에 접속하여 서비스를 사용할 수 있습니다.
-## FastAPI (AI Core Server)
-FastAPI 프로젝트 수동 배포 절차
-배경 설명
+```
+
+## 📍 FastAPI (AI Core Server)
+FastAPI 프로젝트 배경 설명
 FastAPI는 빠르고 효율적인 웹 API를 개발할 수 있는 프레임워크입니다. 이 프로젝트는 FastAPI를 사용하여 개발된 애플리케이션을 AWS와 같은 클라우드 환경에 수동으로 배포하는 절차를 설명합니다.
 
+```bash
 1. 필수 소프트웨어 설치
-먼저 개발된 애플리케이션의 필수 소프트웨어 패키지들을 정리합니다. 이는 애플리케이션이 동작하기 위해 필요한 Python 패키지들의 목록을 생성하는 과정입니다.
+  개발된 애플리케이션의 필수 소프트웨어 패키지들을 정리합니다.
+  -> 이는 애플리케이션이 동작하기 위해 필요한 Python 패키지들의 목록을 생성하는 과정입니다.
 
 2. Docker 컨테이너 설정
-다음으로 Docker를 사용하여 애플리케이션을 컨테이너화합니다. Docker는 애플리케이션을 격리된 환경에서 실행할 수 있도록 도와주는 도구입니다. 이를 통해 애플리케이션의 개발 환경과 운영 환경의 차이를 줄이고, 배포를 더욱 쉽게 할 수 있습니다.
+  Docker를 사용하여 애플리케이션을 컨테이너화합니다.
+  -> Docker는 애플리케이션을 격리된 환경에서 실행할 수 있도록 도와주는 도구입니다. 
+  -> 애플리케이션의 개발 환경과 운영 환경의 차이를 줄이고, 배포를 더욱 쉽게 할 수 있습니다.
 
 3. Dockerfile 작성
-Dockerfile을 작성하여 애플리케이션의 도커 이미지를 빌드합니다. Dockerfile은 애플리케이션을 어떻게 설정하고 실행할 것인지를 정의하는 파일입니다. 여기서는 ARM 아키텍처를 기반으로 한 Python 환경을 설정하고, 필요한 패키지를 설치하며, 애플리케이션을 실행할 준비를 합니다.
+  Dockerfile을 작성하여 애플리케이션의 도커 이미지를 빌드합니다.
+  -> Dockerfile은 애플리케이션을 어떻게 설정하고 실행할 것인지를 정의하는 파일입니다. 
+  -> ARM 아키텍처를 기반으로 한 Python 환경을 설정하고,
+      필요한 패키지를 설치하며, 애플리케이션을 실행할 준비를 합니다.
 
 4. Docker-compose 설정
-이어서 docker-compose를 사용하여 다수의 Docker 컨테이너를 관리하고 실행할 수 있도록 설정합니다. docker-compose.yml 파일은 여러 컨테이너 간의 네트워크 설정과 실행 방법을 정의합니다. 여기서는 FastAPI 애플리케이션을 컨테이너로 묶어서 실행하고, 외부와의 통신을 위한 포트 설정을 추가합니다.
+  docker-compose를 사용하여 다수의 Docker 컨테이너를 관리하고 실행할 수 있도록 설정합니다.
+  -> docker-compose.yml 파일은 여러 컨테이너 간의 네트워크 설정과 실행 방법을 정의합니다. 
+  FastAPI 애플리케이션을 컨테이너로 묶어서 실행하고, 외부와의 통신을 위한 포트 설정을 추가합니다.
 
 5. 클라우드 환경 설정
-AWS와 같은 클라우드 환경에 접속하여 환경 변수 및 기타 설정을 추가합니다. 이 단계에서는 AWS의 환경 변수 설정을 통해 애플리케이션이 정상적으로 운영될 수 있도록 준비합니다.
+  AWS와 같은 클라우드 환경에 접속하여 환경 변수 및 기타 설정을 추가합니다.
+  AWS의 환경 변수 설정을 통해 애플리케이션이 정상적으로 운영될 수 있도록 준비합니다.
 
 6. 로컬 빌드 및 배포
-로컬에서 애플리케이션을 빌드하고, GitHub Actions과 같은 자동화 도구를 대비하여 로컬에서 먼저 테스트를 진행합니다. 이 과정에서는 Docker 이미지를 빌드하고, GitHub Container Registry (GHCR)에 푸시하는 과정을 수행합니다.
+  로컬에서 애플리케이션을 빌드하고, GitHub Actions과 같은 자동화 도구를 대비하여 로컬에서 먼저 테스트를 진행합니다.
+  -> 이 과정에서는 Docker 이미지를 빌드하고,
+      GitHub Container Registry (GHCR)에 푸시하는 과정을 수행합니다.
 
 7. 클라우드 배포
-애플리케이션을 클라우드 환경으로 배포합니다. AWS에 접속하여 애플리케이션을 위한 디렉토리를 만들고, 앞서 작성한 docker-compose.yml 파일을 사용하여 컨테이너를 실행합니다. 이 단계에서는 애플리케이션이 외부에서 접근 가능하도록 네트워크 설정을 완료합니다.
+  애플리케이션을 클라우드 환경으로 배포합니다.
+  AWS에 접속하여 애플리케이션을 위한 디렉토리를 만들고,
+  앞서 작성한 docker-compose.yml 파일을 사용하여 컨테이너를 실행합니다.
+  -> 이 단계에서는 애플리케이션이 외부에서 접근 가능하도록 네트워크 설정을 완료합니다.
 
 8. 테스트 및 외부 접속 설정
-외부에서 API를 테스트하고, 필요한 경우 인바운드 규칙을 설정하여 외부 접속을 허용합니다. 이 과정에서는 애플리케이션이 정상적으로 작동하는지를 확인하고, 문제가 발생할 경우 신속하게 대응할 수 있도록 준비합니다.
+  외부에서 API를 테스트하고, 필요한 경우 인바운드 규칙을 설정하여 외부 접속을 허용합니다.
+  -> 이 과정에서는 애플리케이션이 정상적으로 작동하는지를 확인하고, 문제가 발생할 경우 신속하게 대응할 수 있도록 준비합니다.
 
 9. 백그라운드 실행
-애플리케이션을 백그라운드에서 실행하여 실제 사용자들이 서비스를 이용할 수 있도록 합니다. 이 단계에서는 서버가 계속해서 실행되도록 설정하고, 오류 없이 안정적으로 운영될 수 있도록 관리합니다.
+  애플리케이션을 백그라운드에서 실행하여 실제 사용자들이 서비스를 이용할 수 있도록 합니다.
+  -> 이 단계에서는 서버가 계속해서 실행되도록 설정하고, 오류 없이 안정적으로 운영될 수 있도록 관리합니다.
+```
+
+<br><br><br>
 
 # 9. Autonomous Deploy (자동 배포 진행 절차)
-## Frontend
-### 🩵 CI 구성 🩵
-### 🌈 1 
+수동 배포는 개발자가 직접 로컬 환경에서 빌드하고 클라우드로 배포하는 과정을 수행하는 반면, 자동 배포는 코드 변경이 감지되면 CI/CD 파이프라인을 통해 자동으로 빌드, 테스트, 배포되어 개발 생산성과 안정성을 높입니다.
+
+#### CI/CD 전체 흐름
+  - 개발자 작업 및 테스트 <br>
+    : 각 도메인에 맞춰 백로그 작업을 진행합니다. 테스트가 CI(Continuous Integration)를 통과하면 PR(Pull Request)을 승인합니다.
+  - CI에서의 빌드 <br>
+    : CI가 통과되면 CD(Continuous Deployment)로 넘어가서 배포가 시작됩니다. 이때 npm build를 실행하여 프로젝트를 빌드합니다.
+  - 빌드 결과물 생성 <br>
+    : 빌드 후에는 HTML, CSS, JavaScript, 그리고 이미지 등의 리소스가 생성됩니다.
+  - AWS로의 전송 <br>
+    : 생성된 정보는 SCP(Secure Copy Protocol)를 사용하여 AWS EC2 인스턴스로 전송됩니다.
+  - Nginx 설정 및 구동 <br>
+    : 전송된 파일은 EC2 인스턴스에서 Nginx를 사용하여 호스팅됩니다. 이때 docker-compose.yml 파일을 사용하여 Nginx를 구성합니다.
+      Nginx는 어떤 파일들을 서빙할지 설정하며, 이 정보들은 conf 폴더에 저장됩니다.
+  - 배포 <br>
+    : docker-compose up -d 명령을 통해 Nginx가 설정된 후, Frontend 코드가 EC2 인스턴스에서 동작합니다.
+
+<br><br>
+
+## 📍 Frontend
+### CI 구성
+### 1. Git 저장소의 Actions 탭에서 ci.yml 파일 생성하기
 <img src="https://github.com/user-attachments/assets/b2b8eda5-9f59-497d-9595-b9c0b909e96c"/>
 
-### 🌈 2️
-<img src="https://github.com/user-attachments/assets/920ad1f8-cace-48bc-b616-cff5f7fe31da"/>
-
-### 🌈 3
-```bash
-수동 배포는 개발자가 직접 로컬 환경에서 빌드하고 클라우드로 배포하는 과정을 수행하는 반면, 자동 배포는 코드 변경이 감지되면 CI/CD 파이프라인을 통해 자동으로 빌드, 테스트, 배포되어 개발 생산성과 안정성을 높입니다.
-## Frontend (UI) 자동 배포 과정
-### CI/CD 전체 흐름
-- 개발자 작업 및 테스트: 각 도메인에 맞춰 백로그 작업을 진행합니다. 테스트가 CI(Continuous Integration)를 통과하면 PR(Pull Request)을 승인합니다.
-
-- CI에서의 빌드: CI가 통과되면 CD(Continuous Deployment)로 넘어가서 배포가 시작됩니다. 이때 npm build를 실행하여 프로젝트를 빌드합니다.
-
-- 빌드 결과물 생성: 빌드 후에는 HTML, CSS, JavaScript, 그리고 이미지 등의 리소스가 생성됩니다.
-
-- AWS로의 전송: 생성된 정보는 SCP(Secure Copy Protocol)를 사용하여 AWS EC2 인스턴스로 전송됩니다.
-
-- Nginx 설정 및 구동: 전송된 파일은 EC2 인스턴스에서 Nginx를 사용하여 호스팅됩니다. 이때 docker-compose.yml 파일을 사용하여 Nginx를 구성합니다. Nginx는 어떤 파일들을 서빙할지 설정하며, 이 정보들은 conf 폴더에 저장됩니다.
-
-- 배포: docker-compose up -d 명령을 통해 Nginx가 설정된 후, Frontend 코드가 EC2 인스턴스에서 동작합니다.
-
-CI 설정
+### 2️. CI 설정
 ```yaml
 name: CI (Continuous Integration)
 
@@ -251,36 +289,13 @@ jobs:
           -d '{"event_type": "FRONTEND_TEST_FINISH_TRIGGER", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
 ```
 
-### 🌈 4
+### 4 Actions에서 CI 구동 확인하기
 <img src="https://github.com/user-attachments/assets/91ff498e-c28f-4062-9f38-593936610521"/>
 
-### 💙 CD 구성 💙
-### 🌈 1
-```bash
-      - name: Checkout repository
-        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run Unit Tests
-        run: npm run test:unit
-
-      - name: Trigger CD Workflow
-        run: |
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/dispatches \
-            -d '{"event_type": "FRONTEND_TEST_FINISH_TRIGGER"}'
-```
-
-CD 설정
+### CD 구성
+### 1. CI 구성의 1번 과정과 동일
+### 2. CD 설정
 ```yaml
 name: CD (Continuous Deploy)
 
@@ -501,7 +516,7 @@ nohup ./run.sh > run.log 2>&1 &
             scp -r /path/to/frontend/dist/* .
             docker-compose up -d
 ```
-## Backend (Server)
+## 📍 Backend (Server)
 Django CI 설정
 기본 설정
 GitHub Actions를 이용하여 Django 프로젝트의 CI를 설정합니다. main 브랜치에서 작업을 수행하며, 파일 형식은 YAML을 사용합니다.
